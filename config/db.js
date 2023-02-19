@@ -1,6 +1,7 @@
 const mongoose=require('mongoose')
+require("dotenv").config()
 mongoose.set('strictQuery', true)
-const connection=mongoose.connect("mongodb+srv://shiva:avihs@cluster0.le01f.mongodb.net/notespsc?retryWrites=true&w=majority")
+const connection=mongoose.connect(process.env.mongoURL)
 
 
 module.exports={connection}

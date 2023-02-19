@@ -3,6 +3,7 @@ const { connection } = require("./config/db")
 const { authenticate } = require("./middleware/authentication.middleware")
 const { blogRouter } = require("./routes/Blog.router")
 const { userRouter } = require("./routes/User.router")
+require("dotenv").config()
 
 
 const app = express()
@@ -14,7 +15,7 @@ app.use(authenticate)
 app.use("/blogs",blogRouter)
 
 
-app.listen(8080, async (req, res) => {
+app.listen(process.env.port, async (req, res) => {
     try {
         await connection
         console.log("Connected to DB")
